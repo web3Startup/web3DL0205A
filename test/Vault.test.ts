@@ -28,6 +28,7 @@ describe("Vault", async () => {
         const x = ethX;
         await x.initialize(owner.address);
 
+        await expect(x.initialize(owner.address)).to.be.reverted;
         await x.grantRole(await x.MINTER_ROLE(), user0.address);
         await x.connect(user0).mint(user0.address,parseEther("1000"));
 

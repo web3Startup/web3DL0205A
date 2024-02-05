@@ -9,7 +9,6 @@ contract ETHx is Initializable, ERC20Upgradeable, PausableUpgradeable, AccessCon
     bytes32 public constant BURNER_ROLE = keccak256('BURNER_ROLE');
 
     constructor() {
-        _disableInitializers();
     }
 
     function initialize(address _admin) external initializer {
