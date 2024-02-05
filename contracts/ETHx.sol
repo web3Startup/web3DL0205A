@@ -17,24 +17,24 @@ contract ETHx is Initializable, ERC20Upgradeable, PausableUpgradeable, AccessCon
         _disableInitializers();
     }
 
-//    function initialize(address _admin, address _staderConfig) external initializer {
+    function initialize(address _admin, address _staderConfig) external initializer {
 //        UtilLib.checkNonZeroAddress(_admin);
 //        UtilLib.checkNonZeroAddress(_staderConfig);
-//
-//        __ERC20_init('ETHx', 'ETHx');
-//        __Pausable_init();
-//        __AccessControl_init();
-//
+
+        __ERC20_init('ETHx', 'ETHx');
+        __Pausable_init();
+        __AccessControl_init();
+
 //        staderConfig = IStaderConfig(_staderConfig);
-//        _grantRole(DEFAULT_ADMIN_ROLE, _admin);
-//        emit UpdatedStaderConfig(_staderConfig);
-//    }
-//
-//    function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) whenNotPaused {
-//        _mint(to, amount);
-//    }
-//
-//    function burnFrom(address account, uint256 amount) external onlyRole(BURNER_ROLE) whenNotPaused {
-//        _burn(account, amount);
-//    }
+        _grantRole(DEFAULT_ADMIN_ROLE, _admin);
+        emit UpdatedStaderConfig(_staderConfig);
+    }
+
+    function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) whenNotPaused {
+        _mint(to, amount);
+    }
+
+    function burnFrom(address account, uint256 amount) external onlyRole(BURNER_ROLE) whenNotPaused {
+        _burn(account, amount);
+    }
 }
