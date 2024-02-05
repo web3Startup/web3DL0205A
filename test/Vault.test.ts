@@ -31,8 +31,15 @@ describe("Vault", async () => {
         await x.grantRole(await x.MINTER_ROLE(), user0.address);
         await x.connect(user0).mint(user0.address,parseEther("1000"));
 
+        await x.revokeRole(await x.MINTER_ROLE(), user0.address);
+        await expect(x.connect(user0).mint(user0.address,parseEther("1000")))
+            .to.be.reverted;
+
         await x.grantRole(await x.BURNER_ROLE(), user0.address);
         await x.connect(user0).burnFrom(user0.address,parseEther("1000"));
+        await x.revokeRole(await x.BURNER_ROLE(), user0.address);
+        await expect(x.connect(user0).burnFrom(user0.address,parseEther("1000")))
+            .to.be.reverted;
     });
 });
 
